@@ -5,7 +5,8 @@ Product documentation for the `erpnext_amazon_business` Frappe app. Authoritativ
 ## P0 scope
 
 - DocTypes: Settings, Storefront master, Company Config (+ per-storefront child table)
-- Eleven storefront fixtures (api-mapping §17)
+- Eleven storefront master rows (api-mapping §17), seeded on `bench migrate` via
+  `patches/v0_1/seed_storefronts` from `amazon_business/data/storefronts.py`
 - Phase flags `enable_p1` … `enable_p4` on Settings
 - **Amazon Business** workspace (configuration links; purchase flows land in P1)
 

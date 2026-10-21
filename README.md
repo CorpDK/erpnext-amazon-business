@@ -8,7 +8,7 @@ GPL-3.0-or-later — see [LICENSE](LICENSE).
 
 ## Requirements
 
-- Frappe **v16** and **ERPNext v16** (`bench` with `erpnext` installed)
+- Frappe **v16.x** and **ERPNext v16.x** on `bench` with `erpnext` (v17 is rejected at install/migrate)
 - Python **3.10+**
 
 ## Install on a bench
@@ -44,4 +44,4 @@ bench --site your-site migrate
 
 ## Status
 
-**P0-A** foundation: schema DocTypes, eleven storefront fixtures, phase flags, workspace, ruff CI, unit tests. Purchase sync and PINV flows ship under `enable_p1` in P1.
+**P0-A** foundation: schema DocTypes, storefront master catalog, phase flags, workspace, ruff CI, unit tests. P0 scope detail: [docs/README.md](docs/README.md). Purchase sync and PINV flows ship under `enable_p1` in P1.

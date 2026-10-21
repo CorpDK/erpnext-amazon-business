@@ -20,9 +20,7 @@ def execute() -> None:
 def _check(app_label: str, current: str, minimum: str, maximum_exclusive: str) -> None:
 	parsed = version.parse(current)
 	if parsed < version.parse(minimum):
-		frappe.throw(
-			f"{app_label} {current} is below the minimum for erpnext_amazon_business ({minimum}+)."
-		)
+		frappe.throw(f"{app_label} {current} is below the minimum for erpnext_amazon_business ({minimum}+).")
 	if parsed >= version.parse(maximum_exclusive):
 		frappe.throw(
 			f"{app_label} {current} is not supported by erpnext_amazon_business "
