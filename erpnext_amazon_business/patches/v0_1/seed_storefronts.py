@@ -8,7 +8,7 @@ from erpnext_amazon_business.amazon_business.data.storefronts import STOREFRONTS
 
 
 def execute() -> None:
-	if not frappe.db.table_exists("tabAmazon Business Storefront"):
+	if not frappe.db.table_exists("Amazon Business Storefront"):
 		return
 	for row in STOREFRONTS:
 		if frappe.db.exists("Amazon Business Storefront", row["storefront"]):
