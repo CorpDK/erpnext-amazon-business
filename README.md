@@ -21,10 +21,27 @@ bench --site your-site install-app erpnext_amazon_business
 
 After install, open **Amazon Business** workspace on the site. P0 ships schema and storefront master data only; purchase sync and PINV flows activate when phase **P1** is enabled in **Amazon Business Settings**.
 
+## App layout
+
+| Path | Purpose |
+|------|---------|
+| `erpnext_amazon_business/` | Frappe app package (`hooks.py`, DocTypes, workspace) |
+| `docs/` | Product docs + `manifest.yaml` (CorpDK documentation framework) |
+| `tests/` | Unit tests (storefront catalog); CI migrate job is a skeleton until bench wiring |
+
+**Required apps:** `erpnext` (Frappe v16). **Optional:** `india_compliance`, `drive` — guarded in tax helpers for P1+.
+
 ## Development
 
-See [docs/README.md](docs/README.md) and the implementation plan in private CorpDK/ERP design docs.
+See [docs/README.md](docs/README.md). Design specs: private **CorpDK/ERP** `docs/amazon-business-*.md`.
+
+```bash
+# from a v16 bench
+bench get-app /path/to/this/repo   # or GitHub URL
+bench --site your-site install-app erpnext_amazon_business
+bench --site your-site migrate
+```
 
 ## Status
 
-P0-A foundation (schema, fixtures, CI). Feature phases: `enable_p1` … `enable_p4` on Settings.
+**P0-A** foundation: schema DocTypes, eleven storefront fixtures, phase flags, workspace, ruff CI, unit tests. Purchase sync and PINV flows ship under `enable_p1` in P1.

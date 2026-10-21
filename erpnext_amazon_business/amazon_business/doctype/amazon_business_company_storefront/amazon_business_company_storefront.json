@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "creation": "2026-10-21 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "storefront",
+  "enabled",
+  "connection_status",
+  "refresh_token",
+  "access_token",
+  "token_expiry",
+  "last_sync_at",
+  "next_page_token",
+  "feed_cursor"
+ ],
+ "fields": [
+  {
+   "fieldname": "storefront",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Storefront",
+   "options": "Amazon Business Storefront",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "default": "Not Connected",
+   "fieldname": "connection_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Connection Status",
+   "options": "Not Connected\nConnected\nRevoked"
+  },
+  {
+   "fieldname": "refresh_token",
+   "fieldtype": "Password",
+   "label": "Refresh Token"
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "token_expiry",
+   "fieldtype": "Datetime",
+   "label": "Token Expiry"
+  },
+  {
+   "fieldname": "last_sync_at",
+   "fieldtype": "Datetime",
+   "label": "Last Sync At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_page_token",
+   "fieldtype": "Data",
+   "label": "Next Page Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "feed_cursor",
+   "fieldtype": "Datetime",
+   "label": "Feed Cursor"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business",
+ "name": "Amazon Business Company Storefront",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

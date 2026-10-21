@@ -1,0 +1,142 @@
+{
+ "actions": [],
+ "autoname": "field:company",
+ "creation": "2026-10-21 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "integration_enabled",
+  "defaults_section",
+  "default_cost_center",
+  "purchase_taxes_template",
+  "fallback_supplier",
+  "reconciliation_match_days",
+  "create_items_from_catalog",
+  "default_item_group",
+  "copy_pdf_to_pinv",
+  "storefronts_section",
+  "storefronts"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "integration_enabled",
+   "fieldtype": "Check",
+   "label": "Integration Enabled"
+  },
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "PINV defaults"
+  },
+  {
+   "fieldname": "default_cost_center",
+   "fieldtype": "Link",
+   "label": "Default Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "purchase_taxes_template",
+   "fieldtype": "Link",
+   "label": "Purchase Taxes Template",
+   "options": "Purchase Taxes and Charges Template"
+  },
+  {
+   "fieldname": "fallback_supplier",
+   "fieldtype": "Link",
+   "label": "Fallback Supplier",
+   "options": "Supplier"
+  },
+  {
+   "default": "7",
+   "fieldname": "reconciliation_match_days",
+   "fieldtype": "Int",
+   "label": "Reconciliation Match Days",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "create_items_from_catalog",
+   "fieldtype": "Check",
+   "label": "Create Items From Catalog"
+  },
+  {
+   "default": "Products",
+   "fieldname": "default_item_group",
+   "fieldtype": "Link",
+   "label": "Default Item Group",
+   "options": "Item Group"
+  },
+  {
+   "default": "1",
+   "fieldname": "copy_pdf_to_pinv",
+   "fieldtype": "Check",
+   "label": "Copy PDF to Purchase Invoice"
+  },
+  {
+   "fieldname": "storefronts_section",
+   "fieldtype": "Section Break",
+   "label": "Storefronts"
+  },
+  {
+   "fieldname": "storefronts",
+   "fieldtype": "Table",
+   "label": "Storefront Connections",
+   "options": "Amazon Business Company Storefront"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business",
+ "name": "Amazon Business Company Config",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Accounts User"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "company",
+ "track_changes": 1
+}
