@@ -1,4 +1,4 @@
-"""Require Frappe / ERPNext v16."""
+"""Require Frappe / ERPNext >=16.0.0 and reject v17+."""
 
 from __future__ import annotations
 

@@ -6,8 +6,8 @@ P0 ships schema and master data only. End-user flows (Connect storefronts, sync 
 
 1. Install the app on a Frappe v16 site with ERPNext.
 2. Open **Amazon Business** workspace.
-3. Review **Amazon Business Settings** (connection mode, phase flags).
-4. Create **Amazon Business Company Config** per ERP Company and enable storefront rows (connections activate in P1).
+3. As **System Manager**, review **Amazon Business Settings** (connection mode, phase flags).
+4. As **Accounts Manager**, create **Amazon Business Company Config** per ERP Company and enable storefront rows (connections activate in P1).
 
 ## Coming in P1
 
