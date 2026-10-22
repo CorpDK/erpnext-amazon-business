@@ -1,0 +1,137 @@
+version: 1
+app:
+  name: "ERPNext Amazon Business"
+  repository: "CorpDK/erpnext-amazon-business"
+  owner: "CorpDK"
+  ownerStatus: "active"
+  status: draft
+  lastVerified: "2026-10-22"
+  license: "GPL-3.0-or-later"
+  frappeAppName: erpnext_amazon_business
+  publicationTargets:
+    - frappe_marketplace
+  sourcePaths:
+    - README.md
+    - erpnext_amazon_business/
+    - docs/
+    - pyproject.toml
+
+defaultVisibility: public
+
+documentationStatus:
+  summary: >
+    Frappe v16 app: Amazon Business buyer sync → purchase register, draft PINV,
+    reconciliation; optional relay (integration-service GraphQL + SSE). Design
+    specs live in private CorpDK/ERP docs; product docs ship in this repo.
+  designReferences:
+    - "CorpDK/ERP docs/amazon-business-app-design.md (private monorepo)"
+    - "CorpDK/ERP docs/amazon-business-api-mapping.md"
+    - "CorpDK/ERP docs/amazon-business-implementation-plan.md"
+
+areas:
+  readme:
+    status: present
+    path: README.md
+    visibility: public
+    audience:
+      - installers
+      - frappe_partners
+    source: README.md
+
+  docsIndex:
+    status: present
+    path: docs/README.md
+    visibility: public
+    audience:
+      - installers
+      - users
+    source: docs/README.md
+
+  manuals:
+    external:
+      user:
+        status: planned
+        path: docs/manuals/external/user/
+        visibility: customer-visible
+        audience:
+          - accountants
+          - erp_users
+        reason: "Connect storefronts, sync purchases, Create PINV, reconcile."
+      admin:
+        status: planned
+        path: docs/manuals/external/admin/
+        visibility: customer-visible
+        audience:
+          - system_managers
+        reason: "Amazon Business Settings, relay pairing, Drive invoice paths."
+      developer:
+        status: planned
+        path: docs/manuals/external/developer/
+        visibility: public
+        audience:
+          - frappe_developers
+        reason: "Hooks, DocTypes, relay bridge; no public Amazon API in app."
+    internal:
+      support:
+        status: planned
+        path: docs/manuals/internal/support/
+        visibility: internal
+        audience:
+          - support
+      maintainer:
+        status: planned
+        path: docs/manuals/internal/maintainer/
+        visibility: internal
+        audience:
+          - engineers
+      admin:
+        status: planned
+        path: docs/manuals/internal/admin/
+        visibility: restricted
+        audience:
+          - corpdk_operators
+
+  api:
+    external:
+      status: not-applicable
+      path: docs/api/external/
+      visibility: public
+      reason: "Amazon Business APIs are called server-side; no external API surface on the Frappe app."
+    internal:
+      status: planned
+      path: docs/api/internal/
+      visibility: internal
+      source: erpnext_amazon_business/relay/
+      generated: false
+      reason: "Frappe relay bridge + Amazon client modules."
+
+  releases:
+    status: planned
+    path: docs/releases/
+    visibility: public
+    audience:
+      - installers
+      - marketplace_reviewers
+
+  marketplace:
+    status: planned
+    path: docs/marketplace/
+    visibility: public
+    audience:
+      - frappe_marketplace_reviewers
+    reason: "Listing copy, screenshots checklist, support policy — add before submit."
+
+notApplicableDecisions:
+  - area: api.external
+    reason: "Integrators use Amazon Business APIs directly; this app is an ERPNext desk integration."
+
+waivers: []
+
+bench:
+  frappe_version: ">=16,<17"
+  erpnext_version: ">=16,<17"
+  required_apps:
+    - erpnext
+  optional_apps:
+    - india_compliance
+    - drive

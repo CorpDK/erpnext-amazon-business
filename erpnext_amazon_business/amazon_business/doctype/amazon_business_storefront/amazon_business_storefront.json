@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:storefront",
+ "creation": "2026-10-21 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "storefront",
+  "storefront_label",
+  "country_code",
+  "api_region",
+  "marketplace_id",
+  "oauth_authorize_base",
+  "is_active"
+ ],
+ "fields": [
+  {
+   "fieldname": "storefront",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Storefront",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "storefront_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Label",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Country Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "api_region",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "API Region",
+   "options": "NA\nEU\nFE",
+   "reqd": 1
+  },
+  {
+   "fieldname": "marketplace_id",
+   "fieldtype": "Data",
+   "label": "Marketplace ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "oauth_authorize_base",
+   "fieldtype": "Data",
+   "label": "OAuth Authorize Base",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business",
+ "name": "Amazon Business Storefront",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager"
+  },
+  {
+   "read": 1,
+   "role": "Accounts User"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "storefront",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "storefront_label",
+ "track_changes": 1
+}

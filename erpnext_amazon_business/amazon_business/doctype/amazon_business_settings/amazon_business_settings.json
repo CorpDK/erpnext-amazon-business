@@ -1,0 +1,250 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-21 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "connection_section",
+  "connection_mode",
+  "api_environment",
+  "lwa_credential_mode",
+  "lwa_client_id",
+  "lwa_client_secret",
+  "column_break_conn",
+  "oauth_redirect_uri",
+  "relay_section",
+  "relay_base_url",
+  "relay_graphql_url",
+  "site_pairing_id",
+  "pairing_secret",
+  "relay_subscription_enabled",
+  "relay_events_cursor",
+  "drive_section",
+  "store_invoices_in_drive",
+  "drive_team",
+  "drive_folder_mode",
+  "drive_custom_root",
+  "drive_create_missing_folders",
+  "sync_section",
+  "sync_lookback_days",
+  "sync_schedule",
+  "sync_cron_hour",
+  "document_poll_max_minutes",
+  "phase_section",
+  "enable_p1",
+  "enable_p2",
+  "enable_p3",
+  "enable_p4"
+ ],
+ "fields": [
+  {
+   "fieldname": "connection_section",
+   "fieldtype": "Section Break",
+   "label": "Connection"
+  },
+  {
+   "default": "Relay",
+   "fieldname": "connection_mode",
+   "fieldtype": "Select",
+   "label": "Connection Mode",
+   "options": "Relay\nDirect",
+   "reqd": 1
+  },
+  {
+   "default": "Sandbox",
+   "fieldname": "api_environment",
+   "fieldtype": "Select",
+   "label": "API Environment",
+   "options": "Sandbox\nProduction",
+   "reqd": 1
+  },
+  {
+   "default": "Publisher",
+   "fieldname": "lwa_credential_mode",
+   "fieldtype": "Select",
+   "label": "LWA Credential Mode",
+   "options": "Publisher\nBYO"
+  },
+  {
+   "fieldname": "lwa_client_id",
+   "fieldtype": "Data",
+   "label": "LWA Client ID"
+  },
+  {
+   "fieldname": "lwa_client_secret",
+   "fieldtype": "Password",
+   "label": "LWA Client Secret"
+  },
+  {
+   "fieldname": "column_break_conn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.connection_mode=='Direct'",
+   "fieldname": "oauth_redirect_uri",
+   "fieldtype": "Data",
+   "label": "OAuth Redirect URI (Direct)"
+  },
+  {
+   "fieldname": "relay_section",
+   "fieldtype": "Section Break",
+   "label": "Relay"
+  },
+  {
+   "fieldname": "relay_base_url",
+   "fieldtype": "Data",
+   "label": "Relay Base URL"
+  },
+  {
+   "fieldname": "relay_graphql_url",
+   "fieldtype": "Data",
+   "label": "Relay GraphQL URL"
+  },
+  {
+   "fieldname": "site_pairing_id",
+   "fieldtype": "Data",
+   "label": "Site Pairing ID"
+  },
+  {
+   "fieldname": "pairing_secret",
+   "fieldtype": "Password",
+   "label": "Pairing Secret"
+  },
+  {
+   "default": "1",
+   "fieldname": "relay_subscription_enabled",
+   "fieldtype": "Check",
+   "label": "Relay Subscription Enabled"
+  },
+  {
+   "fieldname": "relay_events_cursor",
+   "fieldtype": "Data",
+   "label": "Relay Events Cursor",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "drive_section",
+   "fieldtype": "Section Break",
+   "label": "Frappe Drive (optional)"
+  },
+  {
+   "default": "1",
+   "fieldname": "store_invoices_in_drive",
+   "fieldtype": "Check",
+   "label": "Store Invoices in Drive"
+  },
+  {
+   "fieldname": "drive_team",
+   "fieldtype": "Link",
+   "label": "Drive Team",
+   "options": "Drive Team"
+  },
+  {
+   "default": "Purchases layout",
+   "fieldname": "drive_folder_mode",
+   "fieldtype": "Select",
+   "label": "Drive Folder Mode",
+   "options": "Purchases layout\nCustom root"
+  },
+  {
+   "fieldname": "drive_custom_root",
+   "fieldtype": "Link",
+   "label": "Drive Custom Root",
+   "options": "Drive File"
+  },
+  {
+   "default": "1",
+   "fieldname": "drive_create_missing_folders",
+   "fieldtype": "Check",
+   "label": "Drive Create Missing Folders"
+  },
+  {
+   "fieldname": "sync_section",
+   "fieldtype": "Section Break",
+   "label": "Sync"
+  },
+  {
+   "default": "30",
+   "fieldname": "sync_lookback_days",
+   "fieldtype": "Int",
+   "label": "Sync Lookback Days",
+   "non_negative": 1
+  },
+  {
+   "default": "Daily",
+   "fieldname": "sync_schedule",
+   "fieldtype": "Select",
+   "label": "Sync Schedule",
+   "options": "Daily"
+  },
+  {
+   "default": "2",
+   "fieldname": "sync_cron_hour",
+   "fieldtype": "Int",
+   "label": "Sync Cron Hour (site TZ)",
+   "non_negative": 1
+  },
+  {
+   "default": "15",
+   "fieldname": "document_poll_max_minutes",
+   "fieldtype": "Int",
+   "label": "Document Poll Max Minutes",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "phase_section",
+   "fieldtype": "Section Break",
+   "label": "Feature phases"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_p1",
+   "fieldtype": "Check",
+   "label": "Enable P1 (Reconciliation + PINV)"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_p2",
+   "fieldtype": "Check",
+   "label": "Enable P2 (Analytics)"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_p3",
+   "fieldtype": "Check",
+   "label": "Enable P3 (Package tracking)"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_p4",
+   "fieldtype": "Check",
+   "label": "Enable P4 (Webhooks)"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business",
+ "name": "Amazon Business Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
