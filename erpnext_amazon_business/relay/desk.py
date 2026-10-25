@@ -24,6 +24,9 @@ def get_relay_status() -> dict:
 
 @frappe.whitelist()
 def trigger_oauth_pull(company: str, storefront: str) -> dict:
+	if not frappe.has_permission("Amazon Business Settings", "write"):
+		frappe.throw("Not permitted", frappe.PermissionError)
+
 	from erpnext_amazon_business.relay.worker import process_oauth_pending
 
 	handled = process_oauth_pending(company, storefront)
@@ -32,6 +35,9 @@ def trigger_oauth_pull(company: str, storefront: str) -> dict:
 
 @frappe.whitelist()
 def get_connect_url(company: str, storefront: str) -> dict:
+	if not frappe.has_permission("Amazon Business Settings", "write"):
+		frappe.throw("Not permitted", frappe.PermissionError)
+
 	settings = frappe.get_single("Amazon Business Settings")
 	if not settings.enable_oauth:
 		frappe.throw("OAuth is disabled in Amazon Business Settings")

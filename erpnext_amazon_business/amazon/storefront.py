@@ -9,7 +9,7 @@ import frappe
 from erpnext_amazon_business.amazon_business.utils.api_hosts import api_base_url_for_region
 
 
-def resolve(storefront: str) -> dict[str, Any]:
+def resolve_storefront(storefront: str) -> dict[str, Any]:
 	"""Return api host, marketplace_id, and related master fields for a storefront key."""
 	if not storefront:
 		raise ValueError("storefront is required")
@@ -31,4 +31,4 @@ def resolve(storefront: str) -> dict[str, Any]:
 
 def get_storefront_master(storefront: str) -> dict[str, Any]:
 	"""Alias used in architecture docs."""
-	return resolve(storefront)
+	return resolve_storefront(storefront)
