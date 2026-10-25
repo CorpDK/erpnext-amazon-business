@@ -14,7 +14,7 @@ TOKEN_REFRESH_MARGIN = timedelta(minutes=5)
 
 def get_access_token(company: str, storefront: str) -> str:
 	"""Return a valid LWA access token for the company storefront connection."""
-	row = _connection_row(company, storefront)
+	row = connection_row(company, storefront)
 	if not row:
 		raise frappe.ValidationError(
 			f"No Amazon Business connection for company={company}, storefront={storefront}"
@@ -38,7 +38,7 @@ def get_access_token(company: str, storefront: str) -> str:
 	return token_data["access_token"]
 
 
-def _connection_row(company: str, storefront: str):
+def connection_row(company: str, storefront: str):
 	config_name = frappe.db.get_value(
 		"Amazon Business Company Config", {"company": company}, "name"
 	)
@@ -113,7 +113,7 @@ def _update_connection_tokens(row, token_data: dict[str, Any]) -> None:
 
 def apply_token_payload(company: str, storefront: str, token_data: dict[str, Any]) -> None:
 	"""Persist tokens on the company storefront row (relay worker / Direct callback)."""
-	row = _connection_row(company, storefront)
+	row = connection_row(company, storefront)
 	if not row:
 		raise frappe.ValidationError(
 			f"No storefront row for company={company}, storefront={storefront}"
