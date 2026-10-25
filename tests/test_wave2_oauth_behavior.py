@@ -4,61 +4,18 @@ from __future__ import annotations
 
 import json
 import sys
-import types
 import unittest
 from datetime import timedelta
 from pathlib import Path
 from unittest import mock
 
-if "frappe" in sys.modules:
-	frappe_mod = sys.modules["frappe"]
-else:
-	frappe_mod = types.ModuleType("frappe")
-	sys.modules["frappe"] = frappe_mod
-
-
-class ValidationError(Exception):
-	pass
-
-
-class PermissionError(Exception):
-	pass
-
-
-def _throw(msg, exc=ValidationError, *args, **kwargs):
-	if isinstance(exc, type) and issubclass(exc, BaseException):
-		raise exc(msg)
-	raise ValidationError(msg)
-
-
-frappe_mod.ValidationError = ValidationError
-frappe_mod.PermissionError = PermissionError
-frappe_mod.throw = _throw
-frappe_mod.conf = {"secret": "test-site-secret"}
-frappe_mod.local = types.SimpleNamespace(conf={"encryption_key": "test-site-secret"})
-frappe_mod.utils = types.SimpleNamespace(
-	now_datetime=lambda: __import__("datetime").datetime(2026, 1, 1, 12, 0, 0),
-	get_datetime=lambda s: (
-		__import__("datetime").datetime.fromisoformat(s.replace("Z", "+00:00"))
-		if isinstance(s, str)
-		else s
-	),
-)
-frappe_mod.db = mock.MagicMock()
-frappe_mod.get_all = mock.MagicMock()
-frappe_mod.get_doc = mock.MagicMock()
-frappe_mod.get_single = mock.MagicMock()
-frappe_mod.has_permission = mock.MagicMock(return_value=True)
-frappe_mod.respond_as_web_page = lambda *a, **k: None
-frappe_mod.publish_realtime = lambda *a, **k: None
-frappe_mod.whitelist = lambda *a, **k: lambda fn: fn
-
-import frappe
-
+import tests.frappe_unit_stub  # noqa: F401
 from erpnext_amazon_business.amazon import resolve_storefront
 from erpnext_amazon_business.amazon.auth import apply_token_payload, get_access_token
 from erpnext_amazon_business.relay.desk import get_connect_url
 from erpnext_amazon_business.relay.worker import process_oauth_pending
+
+frappe = sys.modules["frappe"]
 
 
 def _storefront_row(
