@@ -44,6 +44,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Connect storefronts",
+   "link_count": 0,
+   "link_to": "amazon-business-connect",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Master data",
    "link_count": 0,
    "onboard": 0,

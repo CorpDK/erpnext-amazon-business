@@ -19,7 +19,7 @@ bench get-app https://github.com/CorpDK/erpnext-amazon-business
 bench --site your-site install-app erpnext_amazon_business
 ```
 
-After install, open **Amazon Business** workspace on the site. P0 ships schema and storefront master data only; purchase sync and PINV flows activate when phase **P1** is enabled in **Amazon Business Settings**.
+After install, open **Amazon Business** workspace on the site. Core ships schema, storefront master data, and an OAuth **Connect** shell (Direct or Relay); purchase sync and PINV flows activate when phase **P1** is enabled in the sibling **Amazon Business Reconciliation** app (not on core Settings).
 
 ## App layout
 
@@ -27,7 +27,7 @@ After install, open **Amazon Business** workspace on the site. P0 ships schema a
 |------|---------|
 | `erpnext_amazon_business/` | Frappe app package (`hooks.py`, DocTypes, workspace) |
 | `docs/` | Product docs + `manifest.yaml` (CorpDK documentation framework) |
-| `tests/` | Unit tests (storefront catalog); CI migrate job is a skeleton until bench wiring |
+| `tests/` | Unit tests (storefront catalog, OAuth state, Wave 2 auth gates); CI migrate job is a skeleton until bench wiring |
 
 **Required apps:** `erpnext` (Frappe v16). **Optional:** `india_compliance`, `drive` — guarded in tax helpers for P1+.
 
@@ -44,4 +44,4 @@ bench --site your-site migrate
 
 ## Status
 
-**P0-A** foundation: schema DocTypes, storefront master catalog, phase flags, workspace, ruff CI, unit tests. P0 scope detail: [docs/README.md](docs/README.md). Purchase sync and PINV flows ship under `enable_p1` in P1.
+**P0-A** foundation plus **Wave 2** core trim: schema DocTypes, storefront master catalog, workspace, OAuth Connect shell, sibling APIs (`get_access_token`, `resolve_storefront`), ruff CI, unit tests. Scope detail: [docs/README.md](docs/README.md). Sync, phase flags, and PINV defaults live on reconciliation/Books sibling apps per the three-app architecture.

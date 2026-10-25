@@ -22,6 +22,12 @@ before_migrate = "erpnext_amazon_business.patches.check_version_compatibility.ex
 after_install = "erpnext_amazon_business.install.after_install"
 after_migrate = "erpnext_amazon_business.install.after_migrate"
 
+scheduler_events = {
+	"cron": {
+		"*/5 * * * *": ["erpnext_amazon_business.relay.worker.run_relay_worker_cycle"],
+	},
+}
+
 fixtures = [
 	{
 		"dt": "Amazon Business Storefront",

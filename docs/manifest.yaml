@@ -5,7 +5,7 @@ app:
   owner: "CorpDK"
   ownerStatus: "active"
   status: draft
-  lastVerified: "2026-10-22"
+  lastVerified: "2026-10-25"
   license: "GPL-3.0-or-later"
   frappeAppName: erpnext_amazon_business
   publicationTargets:
@@ -63,7 +63,7 @@ areas:
         visibility: customer-visible
         audience:
           - system_managers
-        reason: "Amazon Business Settings, relay pairing, Drive invoice paths."
+        reason: "Amazon Business Settings, relay pairing, Connect OAuth (core); Drive/sync on reconciliation app."
       developer:
         status: planned
         path: docs/manuals/external/developer/
@@ -101,7 +101,7 @@ areas:
       status: planned
       path: docs/api/internal/
       visibility: internal
-      source: erpnext_amazon_business/relay/
+      source: erpnext_amazon_business/
       generated: false
       reason: "Frappe relay bridge + Amazon client modules."
 

@@ -10,10 +10,7 @@
   "connection_status",
   "refresh_token",
   "access_token",
-  "token_expiry",
-  "last_sync_at",
-  "next_page_token",
-  "feed_cursor"
+  "token_expiry"
  ],
  "fields": [
   {
@@ -53,28 +50,11 @@
    "fieldname": "token_expiry",
    "fieldtype": "Datetime",
    "label": "Token Expiry"
-  },
-  {
-   "fieldname": "last_sync_at",
-   "fieldtype": "Datetime",
-   "label": "Last Sync At",
-   "read_only": 1
-  },
-  {
-   "fieldname": "next_page_token",
-   "fieldtype": "Data",
-   "label": "Next Page Token",
-   "read_only": 1
-  },
-  {
-   "fieldname": "feed_cursor",
-   "fieldtype": "Datetime",
-   "label": "Feed Cursor"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2026-10-21 00:00:00.000000",
+ "modified": "2026-10-25 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Amazon Business",
  "name": "Amazon Business Company Storefront",
