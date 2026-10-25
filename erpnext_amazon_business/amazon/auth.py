@@ -113,6 +113,10 @@ def _update_connection_tokens(row, token_data: dict[str, Any]) -> None:
 
 def apply_token_payload(company: str, storefront: str, token_data: dict[str, Any]) -> None:
 	"""Persist tokens on the company storefront row (relay worker / Direct callback)."""
+	if not token_data.get("access_token"):
+		raise frappe.ValidationError("OAuth token response is missing access_token")
+	if not token_data.get("refresh_token"):
+		raise frappe.ValidationError("OAuth token response is missing refresh_token")
 	row = connection_row(company, storefront)
 	if not row:
 		raise frappe.ValidationError(
