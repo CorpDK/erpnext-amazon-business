@@ -24,6 +24,8 @@ def process_oauth_pending(company: str, storefront: str) -> bool:
 	pending = fetch_oauth_pending(company, storefront)
 	if not pending or pending.get("status") != "READY":
 		return False
+	if not pending.get("accessToken"):
+		return False
 
 	token_data = {
 		"access_token": pending.get("accessToken"),
