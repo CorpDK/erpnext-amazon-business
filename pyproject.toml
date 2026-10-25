@@ -4,6 +4,7 @@ authors = [{ name = "CorpDK", email = "ops@corpdk.local" }]
 description = "Amazon Business buyer sync, purchase register, and ERPNext Purchase Invoice reconciliation"
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = ["requests>=2.28"]
 dynamic = ["version"]
 license = { text = "GPL-3.0-or-later" }
 
