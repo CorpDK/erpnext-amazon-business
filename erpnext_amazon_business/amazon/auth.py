@@ -19,6 +19,7 @@ def get_access_token(company: str, storefront: str) -> str:
 		raise frappe.ValidationError(
 			f"No Amazon Business connection for company={company}, storefront={storefront}"
 		)
+	_ensure_active_connection(row, company, storefront)
 
 	expiry = row.token_expiry
 	cached = row.get_password("access_token", raise_exception=False)
@@ -36,6 +37,23 @@ def get_access_token(company: str, storefront: str) -> str:
 	token_data = _exchange_refresh_token(refresh)
 	_update_connection_tokens(row, token_data)
 	return token_data["access_token"]
+
+
+def _ensure_active_connection(row, company: str, storefront: str) -> None:
+	if not frappe.db.get_value(
+		"Amazon Business Company Config", row.parent, "amazon_integration_enabled"
+	):
+		raise frappe.ValidationError(
+			f"Amazon Business integration is disabled for company {company}"
+		)
+	if not row.enabled:
+		raise frappe.ValidationError(
+			f"Storefront {storefront} is disabled for company {company}"
+		)
+	if row.connection_status != "Connected":
+		raise frappe.ValidationError(
+			f"Storefront {storefront} is not connected for company {company}"
+		)
 
 
 def connection_row(company: str, storefront: str):
