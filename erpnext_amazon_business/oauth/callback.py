@@ -41,9 +41,7 @@ def handle_callback(code: str | None = None, state: str | None = None, error: st
 		frappe.throw("OAuth redirect URI is not configured")
 
 	if not connection_row(company, storefront):
-		frappe.throw(
-			f"No storefront row for company={company}, storefront={storefront}"
-		)
+		frappe.throw(f"No storefront row for company={company}, storefront={storefront}")
 
 	token_data = exchange_authorization_code(code, redirect_uri)
 	apply_token_payload(company, storefront, token_data)
@@ -66,9 +64,7 @@ def handle_callback_payload(code: str, state: str) -> dict[str, Any]:
 	company = payload["company"]
 	storefront = payload["storefront"]
 	if not connection_row(company, storefront):
-		frappe.throw(
-			f"No storefront row for company={company}, storefront={storefront}"
-		)
+		frappe.throw(f"No storefront row for company={company}, storefront={storefront}")
 	settings = frappe.get_single("Amazon Business Settings")
 	token_data = exchange_authorization_code(code, settings.oauth_redirect_uri)
 	apply_token_payload(payload["company"], payload["storefront"], token_data)

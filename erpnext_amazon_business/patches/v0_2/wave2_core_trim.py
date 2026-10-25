@@ -25,6 +25,4 @@ def execute() -> None:
 			SET amazon_integration_enabled = COALESCE(integration_enabled, 0)
 			"""
 		)
-		frappe.db.sql_ddl(
-			"ALTER TABLE `tabAmazon Business Company Config` DROP COLUMN integration_enabled"
-		)
+		frappe.db.sql_ddl("ALTER TABLE `tabAmazon Business Company Config` DROP COLUMN integration_enabled")

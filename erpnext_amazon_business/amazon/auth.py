@@ -30,9 +30,7 @@ def get_access_token(company: str, storefront: str) -> str:
 
 	refresh = row.get_password("refresh_token", raise_exception=False)
 	if not refresh:
-		raise frappe.ValidationError(
-			f"Storefront {storefront} is not connected for company {company}"
-		)
+		raise frappe.ValidationError(f"Storefront {storefront} is not connected for company {company}")
 
 	token_data = _exchange_refresh_token(refresh)
 	_update_connection_tokens(row, token_data)
@@ -40,26 +38,16 @@ def get_access_token(company: str, storefront: str) -> str:
 
 
 def _ensure_active_connection(row, company: str, storefront: str) -> None:
-	if not frappe.db.get_value(
-		"Amazon Business Company Config", row.parent, "amazon_integration_enabled"
-	):
-		raise frappe.ValidationError(
-			f"Amazon Business integration is disabled for company {company}"
-		)
+	if not frappe.db.get_value("Amazon Business Company Config", row.parent, "amazon_integration_enabled"):
+		raise frappe.ValidationError(f"Amazon Business integration is disabled for company {company}")
 	if not row.enabled:
-		raise frappe.ValidationError(
-			f"Storefront {storefront} is disabled for company {company}"
-		)
+		raise frappe.ValidationError(f"Storefront {storefront} is disabled for company {company}")
 	if row.connection_status != "Connected":
-		raise frappe.ValidationError(
-			f"Storefront {storefront} is not connected for company {company}"
-		)
+		raise frappe.ValidationError(f"Storefront {storefront} is not connected for company {company}")
 
 
 def connection_row(company: str, storefront: str):
-	config_name = frappe.db.get_value(
-		"Amazon Business Company Config", {"company": company}, "name"
-	)
+	config_name = frappe.db.get_value("Amazon Business Company Config", {"company": company}, "name")
 	if not config_name:
 		return None
 
@@ -137,7 +125,5 @@ def apply_token_payload(company: str, storefront: str, token_data: dict[str, Any
 		raise frappe.ValidationError("OAuth token response is missing refresh_token")
 	row = connection_row(company, storefront)
 	if not row:
-		raise frappe.ValidationError(
-			f"No storefront row for company={company}, storefront={storefront}"
-		)
+		raise frappe.ValidationError(f"No storefront row for company={company}, storefront={storefront}")
 	_update_connection_tokens(row, token_data)
