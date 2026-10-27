@@ -7,7 +7,7 @@ Product documentation for the `erpnext_amazon_business` Frappe app. Authoritativ
 - DocTypes: Settings (connection/LWA/relay only), Storefront master, Company Config (+ per-storefront child table with OAuth token fields)
 - Eleven storefront master rows (api-mapping §17), seeded on `bench migrate` via
   `patches/v0_1/seed_storefronts` from `amazon_business/data/storefronts.py`
-- Wave 2 patch `patches/v0_2/wave2_core_trim`: renames Company Config `integration_enabled` → `amazon_integration_enabled`; sync schedules, Drive paths, phase flags, and sync cursors are **removed from core** and owned by sibling apps (reconciliation / Books)
+- Wave 2 patch `patches/v0_2/wave2_core_trim`: renames Company Config `integration_enabled` → `amazon_integration_enabled` when that table exists and the legacy column is present (no-op if the DocType table was never created, e.g. configurator migrate); sync schedules, Drive paths, phase flags, and sync cursors are **removed from core** and owned by sibling apps (reconciliation / Books)
 - **Amazon Business** workspace (configuration + **Connect storefronts** page)
 - OAuth shell: Direct `oauth.handle_callback`, relay `registerSite` client + worker skeleton, desk Connect UX (**System Manager**)
 - Python APIs for sibling apps: `resolve_storefront`, `get_access_token` (gated on integration/storefront enabled + Connected status)
