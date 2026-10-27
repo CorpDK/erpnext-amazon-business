@@ -11,8 +11,10 @@ import frappe
 
 
 def execute() -> None:
-	if frappe.db.has_column("tabAmazon Business Company Config", "integration_enabled"):
-		if not frappe.db.has_column("tabAmazon Business Company Config", "amazon_integration_enabled"):
+	if not frappe.db.table_exists("Amazon Business Company Config"):
+		return
+	if frappe.db.has_column("Amazon Business Company Config", "integration_enabled"):
+		if not frappe.db.has_column("Amazon Business Company Config", "amazon_integration_enabled"):
 			frappe.db.sql(
 				"""
 				ALTER TABLE `tabAmazon Business Company Config`
