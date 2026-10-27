@@ -83,7 +83,7 @@ def register_with_relay(site_label: str, registration_token: str) -> dict:
 
 	import erpnext_amazon_business as ab_app
 
-	erp_version = getattr(ab_app, "__version__", "2026.10.0")
+	erp_version = getattr(ab_app, "__version__", "2026.10.1")
 	result = register_site(site_label, erp_version, registration_token)
 	settings = frappe.get_single("Amazon Business Settings")
 	settings.site_pairing_id = result["site_pairing_id"]
