@@ -1,5 +1,8 @@
 """Wave 2: rename company integration flag; note moved Settings fields.
 
+No-op when ``Amazon Business Company Config`` table is absent. ``has_column`` uses the
+DocType name, not a ``tab…`` table prefix.
+
 Sync, drive, phase flags, and relay_events_cursor now belong on the reconciliation app
 (see amazon-business-apps-architecture.md). PINV defaults belong on Books Config (A2).
 Storefront sync cursors move to Storefront Sync State (reconciliation).
@@ -11,8 +14,10 @@ import frappe
 
 
 def execute() -> None:
-	if frappe.db.has_column("tabAmazon Business Company Config", "integration_enabled"):
-		if not frappe.db.has_column("tabAmazon Business Company Config", "amazon_integration_enabled"):
+	if not frappe.db.table_exists("Amazon Business Company Config"):
+		return
+	if frappe.db.has_column("Amazon Business Company Config", "integration_enabled"):
+		if not frappe.db.has_column("Amazon Business Company Config", "amazon_integration_enabled"):
 			frappe.db.sql(
 				"""
 				ALTER TABLE `tabAmazon Business Company Config`
