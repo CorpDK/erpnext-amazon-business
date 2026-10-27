@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib
 import sys
 import unittest
+from unittest import mock
 
 from tests import frappe_unit_stub  # noqa: F401 — installs frappe stub
 
@@ -50,6 +51,9 @@ def _load_execute():
 
 
 class TestWave2CoreTrimPatch(unittest.TestCase):
+	def tearDown(self) -> None:
+		sys.modules["frappe"].db = mock.MagicMock()
+
 	def test_skips_all_sql_when_company_config_table_missing(self) -> None:
 		frappe = sys.modules["frappe"]
 		frappe.db = FrappeLikeDB(tables=set(), columns={})
